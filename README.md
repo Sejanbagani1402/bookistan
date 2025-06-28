@@ -1,197 +1,164 @@
+# Bookistan
+## It is a assesment project given by Predusk Technology Pvt. Ltd.
+## This project is made by Sejan Khan.
 
-#  Bookistan API
+# Tasks Given: 
+Build a Book Review Service API with the following RESTful endpoints:
 
-A FastAPI-powered Book Review service with PostgreSQL, Redis caching, SQLAlchemy ORM, and Alembic for migrations.
+`GET` `/books` – Retrieve a list of all books
 
----
+`POST` `/books`– Add a new book
 
-##  Tasks Given
+`GET` `/books/{id}/reviews` – Retrieve all reviews for a specific book
 
-This project was built to fulfill the following technical assessment tasks:
+`POST` `/books/{id}/reviews` – Add a review to a specific book
 
-1. **Develop a Book Review Service API** with the following RESTful endpoints:
-   - `GET /books` – List all books
-   - `POST /books` – Add a new book
-   - `GET /books/{id}/reviews` – Retrieve reviews for a specific book
-   - `POST /books/{id}/reviews` – Add a review to a specific book
+Auto-generate API documentation using OpenAPI/Swagger (via FastAPI docs).
 
-2. **Document the API** using auto-generated OpenAPI/Swagger documentation.
+Implement database migrations using Alembic.
 
-3. **Design and implement database migrations** using Alembic.
+Optimize review queries by adding an index on the book_id column in the reviews table.
 
-4. **Optimize review retrieval performance** by adding an index on the `book_id` column in the `reviews` table.
+Integrate Redis for caching the book list.
 
-5. **Integrate Redis caching** for the book list endpoint.
+Implement cache-first strategy: Attempt to fetch from Redis first; if cache miss, fallback to database and populate the cache.
 
-6. **Implement cache-first logic**:
-   - First attempt to read from Redis
-   - On cache miss, fetch from database and populate Redis
-   - If Redis is down, fallback gracefully to the database
+Add robust error handling for Redis connection failures.
 
-7. **Add robust error handling** for caching and database failures.
+Write tests:
 
-8. **Write automated tests**:
-   - ✅ Unit tests for key endpoints
-   - ✅ Integration test covering cache-miss behavior
+✅ Unit tests for core endpoints
+
+✅ Integration test covering cache miss fallback
 
 ---
 
-##  Features
 
--  Add and fetch books with ratings, prices, and descriptions
--  Add and fetch reviews for books
--  PostgreSQL database with SQLAlchemy ORM
--  Redis caching for fast retrieval of book data
--  Alembic for database migrations
--  Unit and integration tests with `pytest`
--  OpenAPI docs at `/docs`
 
----
+A simple Book Review REST API built with **FastAPI**, **PostgreSQL**, **Redis**, and **SQLAlchemy**.
 
-## 🛠 Tech Stack
-
-- Python 3.12+
-- FastAPI
-- SQLAlchemy
-- PostgreSQL
-- Redis
-- Alembic
-- Pytest
+This project is a technical assessment for a Backend Engineer role. It includes:
+- Book & Review APIs
+- Redis integration for caching
+- PostgreSQL persistence with migrations
+- Swagger documentation
+- Unit & integration tests
 
 ---
 
-##  Installation
+##  Tech Stack
 
-### 1. Clone the repo
+- **Backend Framework:** FastAPI
+- **ORM:** SQLAlchemy
+- **Database:** PostgreSQL
+- **Caching:** Redis
+- **Migrations:** Alembic
+- **Testing:** Pytest
+- **Documentation:** Swagger UI (auto-generated)
+
+---
+
+##  Setup Instructions
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/bookistan-api.git
-cd bookistan-api
+git clone https://github.com/Sejanbagani1402/bookistan
+cd bookistan
 ```
-
-### 2. Set up virtual environment
+### 2. Create and Activate Virtual Environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+venv/bin/activate 
 
-### 3. Install dependencies
+```
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
-
-### 4. Set up `.env` file
-
-Create a `.env` file in the root directory and copy:
-
-```env
-DATABASE_URL=postgresql://postgres:post@localhost:5432/book_review_db
-REDIS_URL=redis://172.29.175.231:6379
-REDIS_HOST=172.29.175.231
-REDIS_PORT=6379
-```
-
----
-
-##  Database Migrations (Alembic)
-
-### Generate migration script:
+### 2. Create and Activate Virtual Environment
 
 ```bash
-alembic revision --autogenerate -m "Initial migration"
-```
+python -m venv venv
+venv/bin/activate 
 
-### Apply migrations:
+```
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+### 4. Configure Environment Variables
+
+```bash
+DATABASE_URL=postgresql://username:password@localhost:5432/book_review_db
+REDIS_URL=redis://localhost:6379/0
+```
+### 5. Run Database Migrations
 
 ```bash
 alembic upgrade head
 ```
-
----
-
-##  Running Tests
+### 6. Start Redis and PostgreSQL
 
 ```bash
-# Set PYTHONPATH to root of project
-set PYTHONPATH=.
+docker-compose up -d
 
-# Run tests
-pytest tests/
 ```
-
----
-
-##  Run the App
-
+### 7. Run the FastAPI Server
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Then go to: [http://localhost:8000/docs](http://localhost:8000/docs)
+Visit Swagger UI: [Link]http://localhost:8000/docs
 
----
 
-##  API Endpoints
 
-### Books
+ ### API Endpoints
+ Books
+`GET` `/books` – List all books (cached with Redis)
 
-- `GET /books` — List all books (cached)
-- `POST /books` — Add a new book
+`POST` `/books` – Add a new book
 
-### Reviews
+Reviews
+`GET` `/books/{book_id}/reviews` – Get reviews for a book
 
-- `GET /books/{id}/reviews` — Get reviews for a book
-- `POST /books/{id}/reviews` — Add a review to a book
+`POST` `/books/{book_id}/reviews` – Add a review to a book
 
----
+### Caching Logic
+On calling GET /books:
 
-##  Redis Health Check
+Tries to fetch book list from Redis
 
-```bash
-GET /ping-redis
-```
+If cache miss, fetches from database, stores in Redis
 
----
+If Redis is down, the app logs the error and fallbacks to database.
 
-##  Project Structure
+### Author
+Sejan Bagani
+LinkedIn • GitHub
 
-```
-bookistan-api/
-│
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── models.py
-│   ├── schemas.py
-│   ├── database.py
-│   ├── cache.py
-│   └── routers/
-│       └── book.py
-│
-├── alembic/
-│   ├── env.py
-│   └── versions/
-│
-├── tests/
-│   ├── test_books.py
-│   └── test_cache.py
-│
-├── alembic.ini
-├── .env
-├── requirements.txt
-└── README.md
-```
+ Notes
+No authentication is implemented (per assessment instructions)
 
----
+Error handling added for DB and Redis failures
 
-##  Author
+Redis TTL can be configured inside cache.py
 
-**Sejan Bagani** — [GitHub](https://github.com/sejanbagani1402)
+### How to Extend
+GraphQL Subscriptions:
 
----
+Use WebSockets with Strawberry/FastAPI
 
-##  License
+Define subscription { reviewAdded(bookId: ID!) }
 
-This project is for demonstration purposes only.
+Use Redis pub/sub for real-time push
+
+Add auth via JWT for real-time subscriptions
+
+
+
+
+
