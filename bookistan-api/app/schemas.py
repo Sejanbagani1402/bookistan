@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import List
 
 
@@ -10,8 +10,7 @@ class ReviewShow(BaseModel):
     id: int
     content: str
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class BookCreate(BaseModel):
@@ -19,7 +18,7 @@ class BookCreate(BaseModel):
     author: str
     price: float | None
     description: str | None
-    rating: str | None
+    rating: float | None
 
 
 class BookShow(BaseModel):
@@ -31,5 +30,4 @@ class BookShow(BaseModel):
     rating: float | None
     review: List[ReviewShow] = []
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

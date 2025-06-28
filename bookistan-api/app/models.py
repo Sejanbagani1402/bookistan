@@ -23,6 +23,3 @@ class Reviews(Base):
     content = Column(Text, nullable=False)
     book = Relationship("Book", back_populates="review")
     __table_args__ = (Index("ix_reviews_book_id", "book_id"),)
-
-
-app = FastAPI()
