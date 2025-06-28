@@ -1,4 +1,4 @@
-# Bookistan
+<div align = "center"> # Bookistan </div>
 ## It is a assesment project given by Predusk Technology Pvt. Ltd.
 ## This project is made by Sejan Khan.
 
