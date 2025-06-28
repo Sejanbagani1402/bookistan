@@ -8,33 +8,34 @@
 
 
 # Tasks Given: 
-Build a Book Review Service API with the following RESTful endpoints:
 
-- `GET` `/books` – Retrieve a list of all books
+1. Build a Book Review Service API with the following RESTful endpoints:
 
-- `POST` `/books`– Add a new book
+ - `GET` `/books` – Retrieve a list of all books
 
-- `GET` `/books/{id}/reviews` – Retrieve all reviews for a specific book
+ - `POST` `/books`– Add a new book
 
-- `POST` `/books/{id}/reviews` – Add a review to a specific book
+ - `GET` `/books/{id}/reviews` – Retrieve all reviews for a specific book
 
-Auto-generate API documentation using OpenAPI/Swagger (via FastAPI docs).
+ - `POST` `/books/{id}/reviews` – Add a review to a specific book
 
-Implement database migrations using Alembic.
+2. Auto-generate API documentation using OpenAPI/Swagger (via FastAPI docs).
 
-Optimize review queries by adding an index on the book_id column in the reviews table.
+3. Implement database migrations using Alembic.
 
-Integrate Redis for caching the book list.
+4. Optimize review queries by adding an index on the book_id column in the reviews table.
 
-Implement cache-first strategy: Attempt to fetch from Redis first; if cache miss, fallback to database and populate the cache.
+5. Integrate Redis for caching the book list.
 
-Add robust error handling for Redis connection failures.
+6. Implement cache-first strategy: Attempt to fetch from Redis first; if cache miss, fallback to database and populate the cache.
 
-Write tests:
+7. Add robust error handling for Redis connection failures.
 
-✅ Unit tests for core endpoints
+8. Write tests:
 
-✅ Integration test covering cache miss fallback
+ - ✅ Unit tests for core endpoints
+
+ - ✅ Integration test covering cache miss fallback
 
 ---
 
