@@ -1,4 +1,8 @@
-# 📚 Book Review Service
+# 📚 Bookistan
+# It is a assesment project given by Predusk Technology Pvt. Ltd.
+## This project is made by Sejan Khan.
+
+
 
 A simple Book Review REST API built with **FastAPI**, **PostgreSQL**, **Redis**, and **SQLAlchemy**.
 
@@ -28,14 +32,14 @@ This project is a technical assessment for a Backend Engineer role. It includes:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/book-review-service.git
+git clone https://github.com/Sejanbagani1402/bookistan
 cd book-review-service
 ```
 ### 2. Create and Activate Virtual Environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+venv/bin/activate 
 
 ```
 ### 3. Install Dependencies
