@@ -41,14 +41,14 @@
 
 
 
-A simple Book Review REST API built with **FastAPI**, **PostgreSQL**, **Redis**, and **SQLAlchemy**.
+A simple Book Review "REST API" application built with **FastAPI**, **PostgreSQL**, **Redis**, and **SQLAlchemy**.
 
 This project is a technical assessment for a Backend Engineer role. It includes:
-- Book & Review APIs
-- Redis integration for caching
-- PostgreSQL persistence with migrations
-- Swagger documentation
-- Unit & integration tests
+  - Book & Review APIs
+  - Redis integration for caching
+  - PostgreSQL persistence with migrations
+  - Swagger documentation
+  - Unit & integration tests
 
 ---
 
@@ -124,23 +124,23 @@ Visit Swagger UI: [Link]http://localhost:8000/docs
 
  ### API Endpoints
  Books
-`GET` `/books` – List all books (cached with Redis)
-
-`POST` `/books` – Add a new book
+  - `GET` `/books` – List all books (cached with Redis)
+  
+  - `POST` `/books` – Add a new book
 
 Reviews
-`GET` `/books/{book_id}/reviews` – Get reviews for a book
-
-`POST` `/books/{book_id}/reviews` – Add a review to a book
+  - `GET` `/books/{book_id}/reviews` – Get reviews for a book
+  
+  - `POST` `/books/{book_id}/reviews` – Add a review to a book
 
 ### Caching Logic
 On calling GET /books:
 
-Tries to fetch book list from Redis
+1. Tries to fetch book list from Redis
 
-If cache miss, fetches from database, stores in Redis
+2. If cache miss, fetches from database, stores in Redis
 
-If Redis is down, the app logs the error and fallbacks to database.
+3. If Redis is down, the app logs the error and fallbacks to database.
 
 ### Author
 Sejan Bagani
