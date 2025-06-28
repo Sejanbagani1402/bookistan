@@ -5,13 +5,13 @@
 # Tasks Given: 
 Build a Book Review Service API with the following RESTful endpoints:
 
-GET /books – Retrieve a list of all books
+`GET` `/books` – Retrieve a list of all books
 
-POST /books – Add a new book
+`POST` `/books`– Add a new book
 
-GET /books/{id}/reviews – Retrieve all reviews for a specific book
+`GET` `/books/{id}/reviews` – Retrieve all reviews for a specific book
 
-POST /books/{id}/reviews – Add a review to a specific book
+`POST` `/books/{id}/reviews` – Add a review to a specific book
 
 Auto-generate API documentation using OpenAPI/Swagger (via FastAPI docs).
 
@@ -46,11 +46,11 @@ This project is a technical assessment for a Backend Engineer role. It includes:
 
 ---
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 - **Backend Framework:** FastAPI
 - **ORM:** SQLAlchemy
-- **Database:** PostgreSQL (or SQLite)
+- **Database:** PostgreSQL
 - **Caching:** Redis
 - **Migrations:** Alembic
 - **Testing:** Pytest
@@ -64,7 +64,7 @@ This project is a technical assessment for a Backend Engineer role. It includes:
 
 ```bash
 git clone https://github.com/Sejanbagani1402/bookistan
-cd book-review-service
+cd bookistan
 ```
 ### 2. Create and Activate Virtual Environment
 
@@ -82,7 +82,7 @@ pip install -r requirements.txt
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+venv/bin/activate 
 
 ```
 ### 3. Install Dependencies
@@ -118,14 +118,14 @@ Visit Swagger UI: [Link]http://localhost:8000/docs
 
 📘 API Endpoints
 ✅ Books
-GET /books – List all books (cached with Redis)
+`GET` `/books` – List all books (cached with Redis)
 
-POST /books – Add a new book
+`POST` `/books` – Add a new book
 
 ✅ Reviews
-GET /books/{book_id}/reviews – Get reviews for a book
+`GET` `/books/{book_id}/reviews` – Get reviews for a book
 
-POST /books/{book_id}/reviews – Add a review to a book
+`POST` `/books/{book_id}/reviews` – Add a review to a book
 
 🧠 Caching Logic
 On calling GET /books:
