@@ -1,6 +1,37 @@
 # 📚 Bookistan
-# It is a assesment project given by Predusk Technology Pvt. Ltd.
+## It is a assesment project given by Predusk Technology Pvt. Ltd.
 ## This project is made by Sejan Khan.
+
+# Tasks Given: 
+Build a Book Review Service API with the following RESTful endpoints:
+
+GET /books – Retrieve a list of all books
+
+POST /books – Add a new book
+
+GET /books/{id}/reviews – Retrieve all reviews for a specific book
+
+POST /books/{id}/reviews – Add a review to a specific book
+
+Auto-generate API documentation using OpenAPI/Swagger (via FastAPI docs).
+
+Implement database migrations using Alembic.
+
+Optimize review queries by adding an index on the book_id column in the reviews table.
+
+Integrate Redis for caching the book list.
+
+Implement cache-first strategy: Attempt to fetch from Redis first; if cache miss, fallback to database and populate the cache.
+
+Add robust error handling for Redis connection failures.
+
+Write tests:
+
+✅ Unit tests for core endpoints
+
+✅ Integration test covering cache miss fallback
+
+---
 
 
 
@@ -104,38 +135,6 @@ Tries to fetch book list from Redis
 If cache miss, fetches from database, stores in Redis
 
 If Redis is down, the app logs the error and fallbacks to database.
-
-🧪 Running Tests
-bash
-Copy
-Edit
-pytest
-Test Coverage:
-
-Unit tests for GET /books and POST /books
-
-Integration test covering cache miss scenario
-
-🧱 Project Structure
-bash
-Copy
-Edit
-.
-├── app/
-│   ├── main.py          # FastAPI app
-│   ├── models.py        # SQLAlchemy models
-│   ├── schemas.py       # Pydantic schemas
-│   ├── crud.py          # DB operations
-│   ├── cache.py         # Redis helper
-│   └── routers/
-│       └── books.py     # All book-related routes
-├── alembic/             # Migrations
-├── tests/               # Unit & integration tests
-├── .env.example         # Sample env file
-├── requirements.txt
-└── README.md
-🎥 Demo Video
-Watch the project walkthrough (5 mins): [link-to-your-demo-video]
 
 ✍️ Author
 Sejan Bagani
