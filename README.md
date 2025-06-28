@@ -1,8 +1,11 @@
 <div align = "center"> 
 <h1>Bookistan</h1>
+ <h2> It is a assesment project given by Predusk Technology Pvt. Ltd. </h2>
+ <h3> This project is made by Sejan Khan. </h3>
 </div>
-## It is a assesment project given by Predusk Technology Pvt. Ltd.
-## This project is made by Sejan Khan.
+----
+## 
+## 
 
 # Tasks Given: 
 Build a Book Review Service API with the following RESTful endpoints:
