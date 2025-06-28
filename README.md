@@ -10,13 +10,13 @@
 # Tasks Given: 
 Build a Book Review Service API with the following RESTful endpoints:
 
-`GET` `/books` – Retrieve a list of all books
+- `GET` `/books` – Retrieve a list of all books
 
-`POST` `/books`– Add a new book
+- `POST` `/books`– Add a new book
 
-`GET` `/books/{id}/reviews` – Retrieve all reviews for a specific book
+- `GET` `/books/{id}/reviews` – Retrieve all reviews for a specific book
 
-`POST` `/books/{id}/reviews` – Add a review to a specific book
+- `POST` `/books/{id}/reviews` – Add a review to a specific book
 
 Auto-generate API documentation using OpenAPI/Swagger (via FastAPI docs).
 
