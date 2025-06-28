@@ -11,13 +11,13 @@
 
 1. Build a Book Review Service API with the following RESTful endpoints:
 
- - `GET` `/books` – Retrieve a list of all books
+   - `GET` `/books` – Retrieve a list of all books
 
- - `POST` `/books`– Add a new book
+   - `POST` `/books`– Add a new book
 
- - `GET` `/books/{id}/reviews` – Retrieve all reviews for a specific book
+   - `GET` `/books/{id}/reviews` – Retrieve all reviews for a specific book
 
- - `POST` `/books/{id}/reviews` – Add a review to a specific book
+   - `POST` `/books/{id}/reviews` – Add a review to a specific book
 
 2. Auto-generate API documentation using OpenAPI/Swagger (via FastAPI docs).
 
@@ -33,9 +33,9 @@
 
 8. Write tests:
 
- - ✅ Unit tests for core endpoints
+    - ✅ Unit tests for core endpoints
 
- - ✅ Integration test covering cache miss fallback
+    - ✅ Integration test covering cache miss fallback
 
 ---
 
