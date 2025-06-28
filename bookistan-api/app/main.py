@@ -1,30 +1,26 @@
 from fastapi import FastAPI
-from sqlalchemy.orm import Session
-from . import crud, models, schemas
-from .database import Sessionlocal, engine, get_db
-
-app = FastAPI()
+from app.routers import book
+import os
 
 
-# GET /books (list all books)
-@app.get("/books")
-async def ShowBooks():
-    return None
+app = FastAPI(title="Book review service")
+app.include_router(book.router)
+
+import redis
 
 
-# POST /books (add a new book)
-@app.post("/books")
-async def AddBook():
-    return None
+@app.get("/")
+def root():
+    return {"message": "Book Review API is running!"}
 
 
-# GET /books/{id}/reviews
-@app.get("/books/{id}/reviews")
-async def AddReview():
-    return None
-
-
-# POST /books/{id}/reviews
-@app.post("/books/{id}/reviews")
-async def ShowReviews():
-    return None
+@app.get("/ping-redis")
+def ping_redis():
+    try:
+        REDIS_HOST = os.getenv("REDIS_HOST", "172.29.175.231")
+        REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+        r = redis.Redis(REDIS_HOST, REDIS_PORT, decode_responses=True)
+        pong = r.ping()
+        return {"redis": "connected" if pong else "not connected"}
+    except Exception as e:
+        return {"error": str(e)}

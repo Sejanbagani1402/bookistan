@@ -4,7 +4,7 @@ import os
 
 import redis.exceptions
 
-REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_HOST = os.getenv("REDIS_HOST", "172.29.175.231")
 
 REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
 r = redis.Redis(REDIS_HOST, REDIS_PORT, decode_responses=True)

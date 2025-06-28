@@ -10,8 +10,8 @@ class ReviewShow(BaseModel):
     id: int
     content: str
 
-    class config:
-        orm_mode = True
+    class Config:
+        from_attributes = True
 
 
 class BookCreate(BaseModel):
@@ -26,10 +26,10 @@ class BookShow(BaseModel):
     id: int
     title: str
     author: str
-    price: str | None
+    price: float | None
     description: str | None
     rating: float | None
-    review: List[ReviewShow] = [] | None
+    review: List[ReviewShow] = []
 
-    class config:
-        orm_mode = True
+    class Config:
+        from_attributes = True

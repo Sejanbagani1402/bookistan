@@ -21,8 +21,8 @@ class Reviews(Base):
     id = Column(Integer, primary_key=True, index=True)
     book_id = Column(Integer, ForeignKey("books.id"))
     content = Column(Text, nullable=False)
-    book = Relationship("Book", back_populates="reviews")
-    __table_args__ = Index("ix_reviews_book_id", "book_id")
+    book = Relationship("Book", back_populates="review")
+    __table_args__ = (Index("ix_reviews_book_id", "book_id"),)
 
 
 app = FastAPI()

@@ -16,13 +16,9 @@ def show_books(db: Session = Depends(get_db)):
     cached_books = get_book_cache()
     if cached_books:
         return cached_books
-
     books = db.query(models.Book).all()
-
-    ###Hey, This could be wrong. Maybe it needa a check...
-    schemas.BookShow.model_config["from_attributes"] = True
-    result = [schemas.BookShow.model_validate]
-    set_book_cache([books.dict() for book in result])
+    result = [schemas.BookShow.model_validate(book) for book in books]
+    set_book_cache([book.model_dump() for book in result])
     return result
 
 
@@ -54,11 +50,13 @@ def show_book_review(book_id: int, db: Session = Depends(get_db)):
 # async def ShowReviews():
 #     return None
 @router.post("/{book_id}/reviews", response_model=schemas.ReviewShow)
-def add_book_review(book_id: int, review: schemas, db: Session = Depends(get_db)):
+def add_book_review(
+    book_id: int, review: schemas.ReviewShow, db: Session = Depends(get_db)
+):
     db_book = db.query(models.Book).filter(models.Book.id == book_id).first()
     if not db_book:
         raise HTTPException(status_code=404, detail="Book not found")
-    db_review = models.Reviews(**review.dict(), book_id=book_id)
+    db_review = models.Reviews(content=review.content, book_id=book_id)
     db.add(db_review)
     db.commit()
     db.refresh(db_review)
